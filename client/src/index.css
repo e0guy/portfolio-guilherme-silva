@@ -72,9 +72,7 @@ em { font-style: normal; color: var(--coral); }
 .tool-level { display: flex; align-items: center; gap: 7px; margin-top: 14px; }
 .tool-level-track { height: 4px; flex: 1; background: rgba(18,52,59,.13); overflow: hidden; }
 .tool-level-track span { display: block; height: 100%; margin: 0 !important; background: var(--coral); transition: width .5s var(--ease-out); }
-.tool-level small { color: var(--ink-soft); font-size: 9px; font-weight: 700; }
 .tool-card:hover .tool-level-track { background: rgba(250,248,244,.18); }
-.tool-card:hover .tool-level small { color: var(--lime); }
 .tools-legend { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 24px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
 .tools-legend span { display: inline-flex; align-items: center; gap: 7px; }
 .legend-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; }.legend-dot.advanced { background: var(--coral); }.legend-dot.solid { background: var(--ink); }.legend-dot.developing { background: var(--muted); }
