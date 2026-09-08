@@ -5,8 +5,10 @@ import {
   Asterisk,
   Check,
   Github,
+  Instagram,
   Linkedin,
   Mail,
+  MessageCircle,
   Menu,
   MoveUpRight,
   X,
@@ -81,7 +83,7 @@ export default function Home() {
       <aside className={`side-rail ${menuOpen ? "is-open" : ""}`}>
         <button className="rail-close" onClick={() => setMenuOpen(false)} aria-label="Fechar menu"><X size={19} /></button>
         <div className="rail-top">
-          <a className="monogram" href="#top" aria-label="Luanderson Guilherme, início">LG<span>.</span></a>
+          <a className="monogram" href="#top" aria-label="Guilherme Silva, início">GS<span>.</span></a>
           <span className="rail-index">01—05</span>
         </div>
         <nav className="rail-nav" aria-label="Navegação principal">
@@ -93,25 +95,25 @@ export default function Home() {
         </nav>
         <div className="rail-bottom">
           <span className="vertical-label">SISTEMAS / QUALIDADE / DADOS</span>
-          <div className="rail-socials"><a href="https://www.linkedin.com/in/devguilherme-silva" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="https://github.com/e0guy" aria-label="GitHub"><Github size={16} /></a><a href="mailto:guilhermedanta01@gmail.com" aria-label="E-mail"><Mail size={16} /></a></div>
+          <div className="rail-socials"><a href="https://www.linkedin.com/in/devguilherme-silva" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="https://www.instagram.com/e0guilherme/" aria-label="Instagram"><Instagram size={16} /></a><a href="https://wa.me/5581992174567" aria-label="WhatsApp"><MessageCircle size={16} /></a><a href="mailto:guilhermedanta01@gmail.com" aria-label="E-mail"><Mail size={16} /></a></div>
         </div>
       </aside>
 
       <main className="page-content" id="top">
         <header className="mobile-header">
-          <a className="monogram" href="#top">LG<span>.</span></a>
+          <a className="monogram" href="#top">GS<span>.</span></a>
           <button onClick={() => setMenuOpen(true)} aria-label="Abrir menu"><Menu size={22} /></button>
         </header>
 
         <section className="hero-section section-pad">
           <div className="hero-copy">
-            <p className="eyebrow"><Asterisk size={14} /> Luanderson Guilherme / Sistemas & qualidade</p>
+            <p className="eyebrow"><Asterisk size={14} /> Guilherme Silva / Sistemas & qualidade</p>
             <h1>Processos que<br /><em>ganham</em> clareza.</h1>
             <p className="hero-description">Analista Júnior de Sistemas com foco em SAP Utilities, qualidade de software, processos, dados e suporte funcional.</p>
-            <div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>Ver projetos <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Luanderson-Guilherme_883fe919.pdf" target="_blank" rel="noreferrer">Baixar CV <ArrowUpRight size={15} /></a></div>
+            <div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>Ver projetos <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Guilherme-Silva_505b7474.pdf" target="_blank" rel="noreferrer">Baixar CV <ArrowUpRight size={15} /></a></div>
           </div>
           <div className="hero-visual">
-            <div className="hero-photo"><img src="/manus-storage/guilherme_e98ecc76.png" alt="Luanderson Guilherme em seu ambiente de desenvolvimento" /></div>
+            <div className="hero-photo"><img src="/manus-storage/guilherme_e98ecc76.png" alt="Guilherme Silva em seu ambiente de desenvolvimento" /></div>
             <div className="hero-sticker"><span>SAP<br />UTILITIES<br />/ QA</span><Asterisk size={28} /></div>
             <div className="hero-caption"><span>Analista de sistemas / 01</span><span>Igarassu — PE</span></div>
           </div>
@@ -137,7 +139,7 @@ export default function Home() {
 
         <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>ABERTO A<br />OPORTUNIDADES</span></div><div className="contact-content"><div className="section-kicker light"><span>05</span><span>Próxima oportunidade</span></div><h2>Vamos construir<br />a <em>próxima etapa?</em></h2><p>Busco oportunidades Júnior, Academia SAP Utilities e posições em sistemas, qualidade ou análise funcional.</p><a className="button button-light" href="mailto:guilhermedanta01@gmail.com">guilhermedanta01@gmail.com <ArrowUpRight size={16} /></a></div></div></section>
 
-        <footer className="footer"><div><a className="monogram" href="#top">LG<span>.</span></a><p>Analista de sistemas em formação<br />com foco em melhoria contínua.</p></div><div className="footer-links"><a href="https://www.linkedin.com/in/devguilherme-silva">LinkedIn</a><a href="https://github.com/e0guy">GitHub</a><a href="tel:+5581992174567">Telefone</a></div><span className="footer-copy">© 2025 Luanderson Guilherme</span></footer>
+        <footer className="footer"><div><a className="monogram" href="#top">GS<span>.</span></a><p>Analista de sistemas em formação<br />com foco em melhoria contínua.</p></div><div className="footer-links"><a href="mailto:guilhermedanta01@gmail.com">E-mail</a><a href="https://www.linkedin.com/in/devguilherme-silva">LinkedIn</a><a href="https://www.instagram.com/e0guilherme/">Instagram</a><a href="https://wa.me/5581992174567">WhatsApp</a></div><span className="footer-copy">© 2025 Guilherme Silva</span></footer>
       </main>
     </div>
   );
