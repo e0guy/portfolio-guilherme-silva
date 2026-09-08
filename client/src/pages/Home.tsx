@@ -14,43 +14,53 @@ import {
 
 const projects = [
   {
-    title: "API REST de E-commerce",
-    category: "Java / Spring",
-    year: "Acadêmico",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85",
+    title: "Associação Deus é Fiel",
+    category: "ONG / CRM",
+    year: "Voluntário",
+    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=85",
+    url: "https://deusfiel-mwbwyehr.manus.space/#top",
+    summary: "Site institucional e CRM para organizar frentes sociais, cursos, participação e comunicação da ONG.",
     size: "large",
   },
   {
-    title: "CarMatch",
-    category: "React",
-    year: "Web app",
-    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=85",
+    title: "Rayara Studio",
+    category: "Comercial / WhatsApp",
+    year: "Site comercial",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85",
+    url: "https://ephemeral-quokka-f3d7f7.netlify.app",
+    summary: "Site comercial com apresentação de serviços, resultados, agenda e conversão direta para WhatsApp.",
     size: "small",
   },
   {
-    title: "Qualidade & Testes",
-    category: "Testes",
-    year: "Prática",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85",
+    title: "GS Barber Pro",
+    category: "GSYNTRA / SaaS",
+    year: "Produto",
+    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85",
+    url: "https://gsyntra.com.br/",
+    summary: "Produto para organizar agenda, equipe, clientes e comunicação de barbearias em um só sistema.",
     size: "small",
   },
   {
-    title: "Processos e Dados",
-    category: "Processos",
-    year: "Experiência",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85",
+    title: "Ecossistema GSYNTRA",
+    category: "GSYNTRA / Ecossistema",
+    year: "Startup",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+    url: "https://gsyntra.com.br/",
+    summary: "Ecossistema de sites, sistemas e automações com cardápio digital, gestão e soluções sob medida.",
     size: "wide",
   },
   {
-    title: "Infraestrutura & Suporte",
-    category: "Suporte",
-    year: "Experiência",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
+    title: "API REST de E-commerce",
+    category: "Java / Spring",
+    year: "Acadêmico",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=85",
+    url: "https://github.com/e0guy",
+    summary: "API REST em Java e Spring Boot para produtos, usuários, promoções, avaliações e regras de negócio.",
     size: "small",
   },
 ];
 
-const filters = ["Todos", "Java / Spring", "React", "Testes", "Processos", "Suporte"];
+const filters = ["Todos", "ONG / CRM", "Comercial / WhatsApp", "GSYNTRA / SaaS", "GSYNTRA / Ecossistema", "Java / Spring"];
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("Todos");
@@ -115,9 +125,9 @@ export default function Home() {
         </section>
 
         <section className="work-section section-pad" id="work">
-          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Projetos e experiências</span></div><h2>Trabalho<br /><em>em prática.</em></h2></div><p>Uma seleção de projetos acadêmicos e frentes de experiência em desenvolvimento, testes, suporte, processos e dados.</p></div>
+          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Cases reais e projetos</span></div><h2>Trabalho<br /><em>em prática.</em></h2></div><p>Projetos voluntários, comerciais e de produto que mostram como transformo necessidades reais em sites, sistemas, automações e experiências digitais.</p></div>
           <div className="filter-row" role="tablist" aria-label="Filtrar projetos">{filters.map((filter) => <button key={filter} className={activeFilter === filter ? "selected" : ""} onClick={() => setActiveFilter(filter)} role="tab" aria-selected={activeFilter === filter}>{filter}</button>)}</div>
-          <div className="project-grid">{filteredProjects.map((project) => <article className={`project-card ${project.size}`} key={project.title}><div className="project-image"><img src={project.image} alt={`Projeto ou experiência: ${project.title}`} /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><span>{project.category}</span></div><span>{project.year}</span></div></article>)}</div>
+          <div className="project-grid">{filteredProjects.map((project) => <article className={`project-card ${project.size}`} key={project.title}><a href={project.url} target="_blank" rel="noreferrer" aria-label={`Abrir case ${project.title}`}><div className="project-image"><img src={project.image} alt={`Projeto ou experiência: ${project.title}`} /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><span>{project.category}</span><p className="project-summary">{project.summary}</p></div><span>{project.year}</span></div></a></article>)}</div>
         </section>
 
         <section className="process-section section-pad" id="process">
