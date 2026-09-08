@@ -107,10 +107,10 @@ export default function Home() {
 
         <section className="hero-section section-pad">
           <div className="hero-copy">
-            <p className="eyebrow"><Asterisk size={14} /> Guilherme Silva / Sistemas & qualidade</p>
+            <p className="eyebrow"><Asterisk size={14} /> Guilherme Silva / Soluções digitais</p>
             <h1>Processos que<br /><em>ganham</em> clareza.</h1>
-            <p className="hero-description">Analista Júnior de Sistemas com foco em SAP Utilities, qualidade de software, processos, dados e suporte funcional.</p>
-            <div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>Ver projetos <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Guilherme-Silva_505b7474.pdf" target="_blank" rel="noreferrer">Baixar CV <ArrowUpRight size={15} /></a></div>
+            <p className="hero-description">Desenvolvedor de soluções digitais com foco em IA aplicada, qualidade de software, dados, automação e experiências web.</p>
+            <div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>Ver projetos <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Guilherme-Silva-Atualizado_8f1eaa64.pdf" target="_blank" rel="noreferrer">Baixar CV <ArrowUpRight size={15} /></a></div>
           </div>
           <div className="hero-visual">
             <div className="hero-photo"><img src="/manus-storage/guilherme_e98ecc76.png" alt="Guilherme Silva em seu ambiente de desenvolvimento" /></div>
@@ -122,7 +122,7 @@ export default function Home() {
 
         <section className="statement-section section-pad" id="about">
           <div className="section-kicker"><span>02</span><span>Perfil profissional</span></div>
-          <div className="statement-grid"><div><p className="section-title">Análise com<br /><em>visão de processo.</em></p></div><div className="statement-copy"><p>Sou estudante de Análise e Desenvolvimento de Sistemas, com formação técnica em Redes de Computadores e Engenharia de Qualidade de Software pela CESAR School. Tenho experiência em suporte técnico, rotinas administrativas, análise de processos, organização de dados e melhoria contínua.</p><a className="circle-link" href="#contact" onClick={(event) => { event.preventDefault(); scrollTo("contact"); }}>Fale comigo <MoveUpRight size={18} /></a></div></div>
+          <div className="statement-grid"><div><p className="section-title">Soluções com<br /><em>visão de futuro.</em></p></div><div className="statement-copy"><p>Sou estudante de Análise e Desenvolvimento de Sistemas, técnico em Redes de Computadores e formado em Engenharia de Qualidade de Software pela CESAR School. Desenvolvo projetos web comerciais, aplicações, testes, automações e soluções com IA generativa.</p><a className="circle-link" href="#contact" onClick={(event) => { event.preventDefault(); scrollTo("contact"); }}>Fale comigo <MoveUpRight size={18} /></a></div></div>
           <div className="stats-row"><div><strong>05<span>+</span></strong><small>anos de experiência</small></div><div><strong>02</strong><small>projetos em destaque</small></div><div><strong>2025</strong><small>formação CESAR School</small></div><div className="stats-note"><Asterisk size={17} /> Aprender, testar<br />e melhorar sempre.</div></div>
         </section>
 
@@ -137,9 +137,9 @@ export default function Home() {
           <div className="process-layout"><h2>Organizar.<br /><em>Validar.</em><br />Evoluir.</h2><div className="process-list">{[{ n: "01", title: "Sistemas e dados", text: "SQL, Excel, Qlik, organização de informações, relatórios e apoio à tomada de decisão." }, { n: "02", title: "Qualidade de software", text: "Testes manuais, funcionais, exploratórios, regressivos e de API, com BDD/Gherkin." }, { n: "03", title: "Desenvolvimento", text: "Java, Spring Boot, JavaScript, Python, React, HTML, CSS, APIs REST e Git." }, { n: "04", title: "Processos e suporte", text: "Scrum, Kanban, Kaizen, documentação, suporte técnico e melhoria contínua." }].map((step) => <div className="process-item" key={step.n}><span>{step.n}</span><div><h3>{step.title}</h3><p>{step.text}</p></div><Check size={18} /></div>)}</div></div>
         </section>
 
-        <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>ABERTO A<br />OPORTUNIDADES</span></div><div className="contact-content"><div className="section-kicker light"><span>05</span><span>Próxima oportunidade</span></div><h2>Vamos construir<br />a <em>próxima etapa?</em></h2><p>Busco oportunidades Júnior, Academia SAP Utilities e posições em sistemas, qualidade ou análise funcional.</p><a className="button button-light" href="mailto:guilhermedanta01@gmail.com">guilhermedanta01@gmail.com <ArrowUpRight size={16} /></a></div></div></section>
+        <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>ABERTO A<br />OPORTUNIDADES</span></div><div className="contact-content"><div className="section-kicker light"><span>05</span><span>Próxima oportunidade</span></div><h2>Vamos construir<br />a <em>próxima etapa?</em></h2><p>Aberto a oportunidades em desenvolvimento, QA, dados, automação, IA aplicada e criação de soluções digitais.</p><a className="button button-light" href="mailto:guilhermedanta01@gmail.com">guilhermedanta01@gmail.com <ArrowUpRight size={16} /></a></div></div></section>
 
-        <footer className="footer"><div><a className="monogram" href="#top">GS<span>.</span></a><p>Analista de sistemas em formação<br />com foco em melhoria contínua.</p></div><div className="footer-links"><a href="mailto:guilhermedanta01@gmail.com">E-mail</a><a href="https://www.linkedin.com/in/devguilherme-silva">LinkedIn</a><a href="https://www.instagram.com/e0guilherme/">Instagram</a><a href="https://wa.me/5581992174567">WhatsApp</a></div><span className="footer-copy">© 2025 Guilherme Silva</span></footer>
+        <footer className="footer"><div><a className="monogram" href="#top">GS<span>.</span></a><p>Desenvolvedor de soluções digitais<br />com foco em IA, QA e automação.</p></div><div className="footer-links"><a href="mailto:guilhermedanta01@gmail.com">E-mail</a><a href="https://www.linkedin.com/in/devguilherme-silva">LinkedIn</a><a href="https://www.instagram.com/e0guilherme/">Instagram</a><a href="https://wa.me/5581992174567">WhatsApp</a></div><span className="footer-copy">© 2025 Guilherme Silva</span></footer>
       </main>
     </div>
   );
