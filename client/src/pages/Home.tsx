@@ -64,6 +64,26 @@ const projects = [
 
 const filters = ["Todos", "ONG / CRM", "Comercial / WhatsApp", "GSYNTRA / SaaS", "GSYNTRA / Ecossistema", "Java / Spring"];
 
+const tools = [
+  { name: "Java", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/openjdk" },
+  { name: "Python", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/python" },
+  { name: "HTML", group: "Web", icon: "https://cdn.simpleicons.org/html5" },
+  { name: "CSS", group: "Web", icon: "https://img.icons8.com/color/48/000000/css3.png" },
+  { name: "TypeScript", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/typescript" },
+  { name: "React", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/react" },
+  { name: "SQL", group: "Dados", icon: "https://cdn.simpleicons.org/mysql" },
+  { name: "Supabase", group: "Backend", icon: "https://cdn.simpleicons.org/supabase" },
+  { name: "PostgreSQL", group: "Dados", icon: "https://cdn.simpleicons.org/postgresql" },
+  { name: "Spring Boot", group: "Backend", icon: "https://cdn.simpleicons.org/springboot" },
+  { name: "Qlik", group: "Dados", icon: "https://cdn.simpleicons.org/qlik" },
+  { name: "Excel", group: "Dados", icon: "https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" },
+  { name: "ChatGPT", group: "IA aplicada", icon: "https://img.icons8.com/color/48/000000/chatgpt.png" },
+  { name: "Gemini", group: "IA aplicada", icon: "https://cdn.simpleicons.org/googlegemini" },
+  { name: "Manus AI", group: "IA aplicada", icon: "https://img.icons8.com/color/48/000000/artificial-intelligence.png" },
+  { name: "Canva", group: "Criação", icon: "https://img.icons8.com/color/48/000000/canva.png" },
+  { name: "Figma", group: "Criação", icon: "https://cdn.simpleicons.org/figma" },
+];
+
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("Todos");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -84,14 +104,15 @@ export default function Home() {
         <button className="rail-close" onClick={() => setMenuOpen(false)} aria-label="Fechar menu"><X size={19} /></button>
         <div className="rail-top">
           <a className="monogram" href="#top" aria-label="Guilherme Silva, início">GS<span>.</span></a>
-          <span className="rail-index">01—05</span>
+          <span className="rail-index">01—06</span>
         </div>
         <nav className="rail-nav" aria-label="Navegação principal">
           <button className="active" onClick={() => scrollTo("top")}><span>01</span> Início</button>
           <button onClick={() => scrollTo("about")}><span>02</span> Perfil</button>
-          <button onClick={() => scrollTo("work")}><span>03</span> Projetos</button>
-          <button onClick={() => scrollTo("process")}><span>04</span> Competências</button>
-          <button onClick={() => scrollTo("contact")}><span>05</span> Contato</button>
+          <button onClick={() => scrollTo("tools")}><span>03</span> Ferramentas</button>
+          <button onClick={() => scrollTo("work")}><span>04</span> Projetos</button>
+          <button onClick={() => scrollTo("process")}><span>05</span> Competências</button>
+          <button onClick={() => scrollTo("contact")}><span>06</span> Contato</button>
         </nav>
         <div className="rail-bottom">
           <span className="vertical-label">IA / QA / DADOS / AUTOMAÇÃO</span>
@@ -126,18 +147,23 @@ export default function Home() {
           <div className="stats-row"><div><strong>03</strong><small>cases reais publicados</small></div><div><strong>02</strong><small>projetos técnicos</small></div><div><strong>2025</strong><small>formação CESAR School</small></div><div className="stats-note"><Asterisk size={17} /> Aprender, testar<br />e melhorar sempre.</div></div>
         </section>
 
+        <section className="tools-section section-pad" id="tools">
+          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Ferramentas e tecnologias</span></div><h2>Stack para<br /><em>tirar ideias do papel.</em></h2></div><p>As tecnologias que uso para construir interfaces, APIs, dados, automações e experiências digitais com clareza e consistência.</p></div>
+          <div className="tools-grid">{tools.map((tool) => <div className="tool-card" key={tool.name}><div className="tool-icon"><span className="tool-fallback">{tool.name.slice(0, 2).toUpperCase()}</span><img src={tool.icon} alt={`${tool.name} ícone`} loading="lazy" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} /></div><div><strong>{tool.name}</strong><span>{tool.group}</span></div></div>)}</div>
+        </section>
+
         <section className="work-section section-pad" id="work">
-          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Cases reais e projetos</span></div><h2>Trabalho<br /><em>em prática.</em></h2></div><p>Projetos voluntários, comerciais e de produto que mostram como transformo necessidades reais em sites, sistemas, automações e experiências digitais.</p></div>
+          <div className="section-heading"><div><div className="section-kicker"><span>04</span><span>Cases reais e projetos</span></div><h2>Trabalho<br /><em>em prática.</em></h2></div><p>Projetos voluntários, comerciais e de produto que mostram como transformo necessidades reais em sites, sistemas, automações e experiências digitais.</p></div>
           <div className="filter-row" role="tablist" aria-label="Filtrar projetos">{filters.map((filter) => <button key={filter} className={activeFilter === filter ? "selected" : ""} onClick={() => setActiveFilter(filter)} role="tab" aria-selected={activeFilter === filter}>{filter}</button>)}</div>
           <div className="project-grid">{filteredProjects.map((project) => <article className={`project-card ${project.size}`} key={project.title}><a href={project.url} target="_blank" rel="noreferrer" aria-label={`Abrir case ${project.title}`}><div className="project-image"><img src={project.image} alt={`Projeto ou experiência: ${project.title}`} /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><span>{project.category}</span><p className="project-summary">{project.summary}</p></div><span>{project.year}</span></div></a></article>)}</div>
         </section>
 
         <section className="process-section section-pad" id="process">
-          <div className="section-kicker"><span>04</span><span>Competências</span></div>
+          <div className="section-kicker"><span>05</span><span>Competências</span></div>
           <div className="process-layout"><h2>Organizar.<br /><em>Validar.</em><br />Evoluir.</h2><div className="process-list">{[{ n: "01", title: "Desenvolvimento", text: "Java, Spring Boot, Python, JavaScript, TypeScript, React, APIs REST e Git/GitHub." }, { n: "02", title: "Qualidade e QA", text: "Testes manuais, funcionais, exploratórios, regressivos e de API, com BDD/Gherkin, JUnit, Mockito e MockMvc." }, { n: "03", title: "Dados e automação", text: "SQL, Qlik, dashboards, Excel, IA generativa aplicada, prompts, chatbots e automações com n8n." }, { n: "04", title: "Processos e suporte", text: "Scrum, Kanban, Kaizen, levantamento de requisitos, documentação, suporte técnico e melhoria contínua." }].map((step) => <div className="process-item" key={step.n}><span>{step.n}</span><div><h3>{step.title}</h3><p>{step.text}</p></div><Check size={18} /></div>)}</div></div>
         </section>
 
-        <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>ABERTO A<br />OPORTUNIDADES</span></div><div className="contact-content"><div className="section-kicker light"><span>05</span><span>Próxima oportunidade</span></div><h2>Vamos construir<br />a <em>próxima etapa?</em></h2><p>Aberto a oportunidades em desenvolvimento, QA, dados, automação, IA aplicada e criação de soluções digitais.</p><a className="button button-light" href="mailto:guilhermedanta01@gmail.com">guilhermedanta01@gmail.com <ArrowUpRight size={16} /></a></div></div></section>
+        <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>ABERTO A<br />OPORTUNIDADES</span></div><div className="contact-content"><div className="section-kicker light"><span>06</span><span>Próxima oportunidade</span></div><h2>Vamos construir<br />a <em>próxima etapa?</em></h2><p>Aberto a oportunidades em desenvolvimento, QA, dados, automação, IA aplicada e criação de soluções digitais.</p><a className="button button-light" href="mailto:guilhermedanta01@gmail.com">guilhermedanta01@gmail.com <ArrowUpRight size={16} /></a></div></div></section>
 
         <footer className="footer"><div><a className="monogram" href="#top">GS<span>.</span></a><p>Desenvolvedor de soluções digitais<br />com foco em IA, QA e automação.</p></div><div className="footer-links"><a href="mailto:guilhermedanta01@gmail.com">E-mail</a><a href="https://www.linkedin.com/in/devguilherme-silva">LinkedIn</a><a href="https://www.instagram.com/e0guilherme/">Instagram</a><a href="https://wa.me/5581992174567">WhatsApp</a></div><span className="footer-copy">© 2025 Guilherme Silva</span></footer>
       </main>
