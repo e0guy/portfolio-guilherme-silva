@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -10,8 +10,10 @@ import {
   Mail,
   MessageCircle,
   Menu,
+  Moon,
   MoveUpRight,
   X,
+  Sun,
 } from "lucide-react";
 
 type Language = "pt" | "es" | "en";
@@ -57,6 +59,8 @@ const copy = {
     instagram: "Instagram",
     whatsapp: "WhatsApp",
     digitalSolutions: "Digital solutions / 01",
+    themeLight: "Ativar modo escuro",
+    themeDark: "Ativar modo claro",
   },
   es: {
     nav: ["Inicio", "Perfil", "Herramientas", "Proyectos", "Competencias", "Contacto"],
@@ -98,6 +102,8 @@ const copy = {
     instagram: "Instagram",
     whatsapp: "WhatsApp",
     digitalSolutions: "Soluciones digitales / 01",
+    themeLight: "Activar modo oscuro",
+    themeDark: "Activar modo claro",
   },
   en: {
     nav: ["Home", "Profile", "Tools", "Projects", "Skills", "Contact"],
@@ -139,6 +145,8 @@ const copy = {
     instagram: "Instagram",
     whatsapp: "WhatsApp",
     digitalSolutions: "Digital solutions / 01",
+    themeLight: "Enable dark mode",
+    themeDark: "Enable light mode",
   },
 } as const;
 
@@ -166,30 +174,41 @@ const groupLabels: Record<Language, Record<string, string>> = {
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("pt");
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const stored = window.localStorage.getItem("portfolio-theme");
+    return stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
   const [activeFilter, setActiveFilter] = useState("Todos");
   const [menuOpen, setMenuOpen] = useState(false);
   const t = copy[language];
   const filteredProjects = useMemo(() => activeFilter === "Todos" ? projects : projects.filter((project) => project.category.pt === activeFilter), [activeFilter]);
   const scrollTo = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); setMenuOpen(false); };
   const changeLanguage = (next: Language) => setLanguage(next);
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkMode ? "dark" : "light";
+    window.localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", darkMode ? "#081316" : "#f3eee6");
+  }, [darkMode]);
 
   return (
     <div className="portfolio-shell">
+      <a className="skip-link" href="#work">Ir para o conteúdo principal</a>
       <aside className={`side-rail ${menuOpen ? "is-open" : ""}`}>
         <button className="rail-close" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={19} /></button>
         <div className="rail-top"><a className="monogram" href="#top" aria-label="Guilherme Silva, início">GS<span>.</span></a><span className="rail-index">01—06</span></div>
         <nav className="rail-nav" aria-label="Main navigation">{t.nav.map((label, index) => <button key={label} className={index === 0 ? "active" : ""} onClick={() => scrollTo(["top", "about", "tools", "work", "process", "contact"][index])}><span>{String(index + 1).padStart(2, "0")}</span> {label}</button>)}</nav>
-        <div className="rail-bottom"><span className="vertical-label">IA / QA / DADOS / AUTOMAÇÃO</span><div className="rail-socials"><a href="https://www.linkedin.com/in/devguilherme-silva" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="https://www.instagram.com/e0guilherme/" aria-label="Instagram"><Instagram size={16} /></a><a href="https://wa.me/5581992174567" aria-label="WhatsApp"><MessageCircle size={16} /></a><a href="mailto:guilhermedanta01@gmail.com" aria-label="E-mail"><Mail size={16} /></a></div><div className="language-switcher" aria-label="Language selector">{(["pt", "es", "en"] as Language[]).map((lang) => <button key={lang} className={language === lang ? "active" : ""} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</button>)}</div></div>
+        <div className="rail-bottom"><span className="vertical-label">IA / QA / DADOS / AUTOMAÇÃO</span><div className="rail-socials"><a href="https://www.linkedin.com/in/devguilherme-silva" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="https://www.instagram.com/e0guilherme/" aria-label="Instagram"><Instagram size={16} /></a><a href="https://wa.me/5581992174567" aria-label="WhatsApp"><MessageCircle size={16} /></a><a href="mailto:guilhermedanta01@gmail.com" aria-label="E-mail"><Mail size={16} /></a></div><div className="rail-controls"><div className="language-switcher" aria-label="Language selector">{(["pt", "es", "en"] as Language[]).map((lang) => <button key={lang} className={language === lang ? "active" : ""} onClick={() => changeLanguage(lang)} aria-pressed={language === lang}>{lang.toUpperCase()}</button>)}</div><button className="theme-toggle" onClick={() => setDarkMode((current) => !current)} aria-label={darkMode ? t.themeDark : t.themeLight} aria-pressed={darkMode}>{darkMode ? <Sun size={15} /> : <Moon size={15} />}</button></div></div>
       </aside>
 
       <main className="page-content" id="top">
-        <header className="mobile-header"><a className="monogram" href="#top">GS<span>.</span></a><div className="mobile-controls"><div className="language-switcher">{(["pt", "es", "en"] as Language[]).map((lang) => <button key={lang} className={language === lang ? "active" : ""} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</button>)}</div><button onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={22} /></button></div></header>
+        <header className="mobile-header"><a className="monogram" href="#top" aria-label="Guilherme Silva, início">GS<span>.</span></a><div className="mobile-controls"><div className="language-switcher" aria-label="Language selector">{(["pt", "es", "en"] as Language[]).map((lang) => <button key={lang} className={language === lang ? "active" : ""} onClick={() => changeLanguage(lang)} aria-pressed={language === lang}>{lang.toUpperCase()}</button>)}</div><button className="theme-toggle" onClick={() => setDarkMode((current) => !current)} aria-label={darkMode ? t.themeDark : t.themeLight} aria-pressed={darkMode}>{darkMode ? <Sun size={17} /> : <Moon size={17} />}</button><button onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={22} /></button></div></header>
 
         <section className="hero-section section-pad"><div className="hero-copy"><p className="eyebrow"><Asterisk size={14} /> {t.heroEyebrow}</p><h1>{t.heroTitle}</h1><p className="hero-description">{t.heroDescription}</p><div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>{t.seeProjects} <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Guilherme-Silva-Atualizado_8f1eaa64.pdf" target="_blank" rel="noreferrer">{t.downloadCv} <ArrowUpRight size={15} /></a></div></div><div className="hero-visual"><div className="hero-photo"><img src="/manus-storage/guilherme_e98ecc76.png" alt="Guilherme Silva" /></div><div className="hero-sticker"><span>IA<br />QA<br />/ DATA</span><Asterisk size={28} /></div><div className="hero-caption"><span>{t.digitalSolutions}</span><span>{t.location}</span></div></div><div className="hero-marquee" aria-hidden="true"><span>DESENVOLVIMENTO — QA — DADOS — AUTOMAÇÃO — DESENVOLVIMENTO — QA — DADOS — </span></div></section>
 
         <section className="statement-section section-pad" id="about"><div className="section-kicker"><span>02</span><span>{t.profileKicker}</span></div><div className="statement-grid"><div><p className="section-title">{t.profileTitle}</p></div><div className="statement-copy"><p>{t.profileText}</p><a className="circle-link" href="#contact" onClick={(event) => { event.preventDefault(); scrollTo("contact"); }}>{t.talkToMe} <MoveUpRight size={18} /></a></div></div><div className="stats-row"><div><strong>03</strong><small>{t.stats[0]}</small></div><div><strong>02</strong><small>{t.stats[1]}</small></div><div><strong>2025</strong><small>{t.stats[2]}</small></div><div className="stats-note"><Asterisk size={17} /> {t.note}</div></div></section>
 
-        <section className="tools-section section-pad" id="tools"><div className="section-heading"><div><div className="section-kicker"><span>03</span><span>{t.toolsKicker}</span></div><h2>{t.toolsTitle}</h2></div><p>{t.toolsText}</p></div><div className="tools-grid">{tools.map((tool) => <div className="tool-card" key={tool.name}><div className="tool-icon"><span className="tool-fallback">{tool.name.slice(0, 2).toUpperCase()}</span><img src={tool.icon} alt={`${tool.name} icon`} loading="lazy" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} /></div><div><strong>{tool.name}</strong><span>{groupLabels[language][tool.group]}</span><div className="tool-level" aria-label={`${tool.name}: visual proficiency level`}><div className="tool-level-track"><span style={{ width: `${tool.level}%` }} /></div></div></div></div>)}</div><div className="tools-legend"><span><i className="legend-dot advanced" /> {t.legend[0]}</span><span><i className="legend-dot solid" /> {t.legend[1]}</span><span><i className="legend-dot developing" /> {t.legend[2]}</span></div></section>
+        <section className="tools-section section-pad" id="tools"><div className="section-heading"><div><div className="section-kicker"><span>03</span><span>{t.toolsKicker}</span></div><h2>{t.toolsTitle}</h2></div><p>{t.toolsText}</p></div><div className="tools-grid">{tools.map((tool) => <div className="tool-card" key={tool.name}><div className="tool-icon"><span className="tool-fallback">{tool.name.slice(0, 2).toUpperCase()}</span><img src={tool.icon} alt={`${tool.name} icon`} loading="lazy" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} /></div><div><strong>{tool.name}</strong><span>{groupLabels[language][tool.group]}</span><div className="tool-level" aria-label={`${tool.name}: visual proficiency level`}><div className="tool-level-track" role="progressbar" aria-label={`${tool.name} proficiency`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={tool.level}><span style={{ width: `${tool.level}%` }} /></div></div></div></div>)}</div><div className="tools-legend"><span><i className="legend-dot advanced" /> {t.legend[0]}</span><span><i className="legend-dot solid" /> {t.legend[1]}</span><span><i className="legend-dot developing" /> {t.legend[2]}</span></div></section>
 
         <section className="work-section section-pad" id="work"><div className="section-heading"><div><div className="section-kicker"><span>04</span><span>{t.workKicker}</span></div><h2>{t.workTitle}</h2></div><p>{t.workText}</p></div><div className="filter-row" role="tablist" aria-label="Project filters">{filters.map((filter) => <button key={filter} className={activeFilter === filter ? "selected" : ""} onClick={() => setActiveFilter(filter)} role="tab" aria-selected={activeFilter === filter}>{filterLabels[language][filter]}</button>)}</div><div className="project-grid">{filteredProjects.map((project) => <article className={`project-card ${project.size}`} key={project.title.en}><a href={project.url} target="_blank" rel="noreferrer" aria-label={`${project.title[language]}`}><div className="project-image"><img src={project.image} alt={`${project.title[language]}`} /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><div><h3>{project.title[language]}</h3><span>{project.category[language]}</span>{project.technologies && <div className="project-tech" aria-label="Technologies used">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>}<p className="project-summary">{project.summary[language]}</p></div><span>{project.year[language]}</span></div></a></article>)}</div></section>
 

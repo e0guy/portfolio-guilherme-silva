@@ -4,7 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="description" content="Guilherme Silva — Desenvolvedor de Soluções Digitais, IA Aplicada, QA, Dados e Automação." />
+    <meta name="theme-color" content="#f3eee6" />
     <title>Guilherme Silva — Soluções Digitais</title>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch (error) {
+        // Theme preference is optional; continue with the light theme if storage is unavailable.
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
