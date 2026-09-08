@@ -111,3 +111,12 @@ temp/
 # Manus version file (auto-generated, not part of source)
 client/public/__manus__/version.json
 .project-config.json
+
+# Manus/WebDev internal files
+.manus/
+.manus-logs/
+.project-config.json
+dist/
+cv-notes.md
+ideas.md
+novanotes-case-notes.md
