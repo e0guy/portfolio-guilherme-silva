@@ -250,3 +250,77 @@ html[data-theme="dark"] .mobile-controls .theme-toggle { background: var(--lime)
   .rail-controls { align-items: flex-start; flex-direction: row; gap: 14px; }
   .side-rail .theme-toggle { min-width: 38px; min-height: 34px; }
 }
+
+
+/* Reading controls, project details and interaction polish */
+:root { --font-scale: 1; }
+.page-content { font-size: calc(16px * var(--font-scale)); }
+.hero-description, .statement-copy, .section-heading > p, .project-summary, .process-item p, .contact-content p, .footer p { font-size: calc(1em * var(--font-scale)); }
+.font-controls { display: flex; align-items: center; gap: 3px; }
+.font-controls button { width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid rgba(250,248,244,.25); background: transparent; color: #91a9a9; transition: background .2s ease, color .2s ease, transform .2s var(--ease-out); }
+.font-controls button:hover, .font-controls button:focus-visible { background: var(--lime); color: var(--ink); }
+.font-controls button:active { transform: scale(.92); }
+.font-controls .font-reset { color: var(--coral); }
+.mobile-controls .font-controls button { border-color: rgba(18,52,59,.25); color: var(--ink); }
+html[data-theme="dark"] .mobile-controls .font-controls button { border-color: rgba(232,240,237,.3); color: var(--ink); }
+
+.project-card > a { display: block; height: 100%; }
+.project-card:focus-within { transform: translateY(-7px); }
+.project-card:hover .project-image, .project-card:focus-within .project-image { box-shadow: 0 18px 34px rgba(18,52,59,.16); }
+.project-card .project-meta { transition: border-color .25s ease, transform .25s var(--ease-out); }
+.project-card:hover .project-meta, .project-card:focus-within .project-meta { border-color: var(--coral); transform: translateY(-2px); }
+.button, .text-link, .circle-link, .footer-links a, .filter-row button { transition: transform .2s var(--ease-out), color .2s ease, background-color .2s ease, border-color .2s ease; }
+.button:active, .theme-toggle:active, .font-controls button:active { transform: scale(.96); }
+
+.project-modal-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 26px; background: rgba(8,19,22,.78); backdrop-filter: blur(10px); animation: modal-fade .22s ease-out; }
+.project-modal { position: relative; width: min(1040px, 100%); max-height: min(860px, 92vh); overflow-y: auto; background: var(--paper); color: var(--ink); box-shadow: 0 26px 90px rgba(0,0,0,.35); animation: modal-rise .28s var(--ease-out); }
+.modal-close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(18,52,59,.25); background: var(--paper); color: var(--ink); transition: transform .2s var(--ease-out), background .2s ease; }
+.modal-close:hover, .modal-close:focus-visible { background: var(--coral); transform: rotate(5deg); }
+.modal-gallery { display: grid; grid-template-columns: 1.25fr .75fr; gap: 10px; background: var(--ink); }
+.modal-gallery img { width: 100%; height: 250px; display: block; object-fit: cover; }
+.modal-gallery img:first-child { height: 330px; }
+.modal-body { padding: 36px clamp(24px, 5vw, 62px) 48px; }
+.modal-body h2 { margin: 20px 0 14px; font: 600 clamp(38px, 6vw, 74px)/.92 'Space Grotesk', sans-serif; letter-spacing: -.07em; }
+.modal-summary { max-width: 730px; margin: 0; color: var(--ink-soft); font-size: 17px; line-height: 1.7; }
+.modal-columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 34px 0 27px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.modal-columns strong, .modal-tech > strong { display: block; margin-bottom: 8px; color: var(--coral); font: 700 11px 'Space Grotesk'; letter-spacing: .12em; text-transform: uppercase; }
+.modal-columns p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.modal-tech > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.modal-tech span { display: inline-flex; padding: 7px 10px; border: 1px solid var(--line); color: var(--ink-soft); font: 600 10px 'Space Grotesk'; letter-spacing: .05em; text-transform: uppercase; }
+.modal-visit { margin-top: 30px; }
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-rise { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+html[data-theme="dark"] .project-modal { background: #10191c; }
+html[data-theme="dark"] .modal-close { border-color: rgba(232,240,237,.25); background: #10191c; color: var(--ink); }
+html[data-theme="dark"] .modal-close:hover, html[data-theme="dark"] .modal-close:focus-visible { background: var(--coral); color: #081316; }
+
+@media (max-width: 850px) {
+  .rail-controls { gap: 12px; }
+  .font-controls button { width: 29px; height: 32px; }
+}
+@media (max-width: 520px) {
+  .mobile-controls { gap: 6px; }
+  .mobile-controls .font-controls button { width: 25px; height: 38px; }
+  .project-modal-backdrop { padding: 12px; }
+  .project-modal { max-height: 94vh; }
+  .modal-gallery { grid-template-columns: 1fr; }
+  .modal-gallery img, .modal-gallery img:first-child { height: 190px; }
+  .modal-gallery img + img { display: none; }
+  .modal-body { padding: 28px 22px 34px; }
+  .modal-summary { font-size: 15px; }
+  .modal-columns { grid-template-columns: 1fr; gap: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-modal-backdrop, .project-modal { animation: none; }
+  .project-card:hover, .project-card:focus-within, .project-card:hover .project-meta, .project-card:focus-within .project-meta { transform: none; }
+}
+
+
+/* Scale the main typographic hierarchy with the reading controls. */
+.hero-copy h1 { font-size: calc(clamp(58px, 8vw, 118px) * var(--font-scale)); }
+.section-title, .section-heading h2, .process-layout h2 { font-size: calc(clamp(48px, 6vw, 88px) * var(--font-scale)); }
+.contact-content h2 { font-size: calc(clamp(50px, 7vw, 100px) * var(--font-scale)); }
+@media (max-width: 520px) {
+  .hero-copy h1 { font-size: calc(56px * var(--font-scale)); }
+  .section-heading h2 { font-size: calc(58px * var(--font-scale)); }
+}
