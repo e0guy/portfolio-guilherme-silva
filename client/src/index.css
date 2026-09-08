@@ -41,8 +41,8 @@ em { font-style: normal; color: var(--coral); }
 .button-light { background: var(--lime); color: var(--ink); }
 .text-link { display: inline-flex; gap: 5px; align-items: center; background: transparent; border: 0; color: var(--ink); border-bottom: 1px solid var(--ink); padding: 5px 0; font-size: 11px; font-weight: 700; }
 .hero-visual { position: relative; max-width: 455px; width: 100%; justify-self: end; }
-.hero-photo { aspect-ratio: .78; overflow: hidden; background: #c9c5be; filter: grayscale(100%); }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+.hero-photo { aspect-ratio: .78; overflow: hidden; background: #c9c5be; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 .hero-sticker { position: absolute; bottom: 8%; left: -44px; width: 105px; height: 105px; background: var(--coral); color: var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding: 14px; transform: rotate(-8deg); font: 700 10px/1.15 'Space Grotesk'; }
 .hero-caption { display: flex; justify-content: space-between; color: var(--muted); font-size: 9px; letter-spacing: .06em; margin-top: 11px; }
 .hero-marquee { position: absolute; bottom: 16px; left: 0; width: 100%; color: rgba(18,52,59,.14); font: 700 clamp(30px, 4vw, 58px)/1 'Space Grotesk'; letter-spacing: -.06em; white-space: nowrap; overflow: hidden; }

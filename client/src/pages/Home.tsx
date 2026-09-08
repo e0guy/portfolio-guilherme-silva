@@ -4,9 +4,9 @@ import {
   ArrowUpRight,
   Asterisk,
   Check,
-  Dribbble,
-  Instagram,
+  Github,
   Linkedin,
+  Mail,
   Menu,
   MoveUpRight,
   X,
@@ -14,44 +14,43 @@ import {
 
 const projects = [
   {
-    title: "Auréa House",
-    category: "Branding",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85",
+    title: "API REST de E-commerce",
+    category: "Java / Spring",
+    year: "Acadêmico",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85",
     size: "large",
   },
   {
-    title: "Forma / 01",
-    category: "Digital",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?auto=format&fit=crop&w=900&q=85",
+    title: "CarMatch",
+    category: "React",
+    year: "Web app",
+    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=85",
     size: "small",
   },
   {
-    title: "Salt Lines",
-    category: "Campaign",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85",
+    title: "Qualidade & Testes",
+    category: "Testes",
+    year: "Prática",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85",
     size: "small",
   },
   {
-    title: "North / South",
-    category: "Editorial",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+    title: "Processos e Dados",
+    category: "Processos",
+    year: "Experiência",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85",
     size: "wide",
   },
   {
-    title: "Mono Objects",
-    category: "Art direction",
-    year: "2022",
-    image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=900&q=85",
+    title: "Infraestrutura & Suporte",
+    category: "Suporte",
+    year: "Experiência",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
     size: "small",
   },
 ];
 
-const services = ["Brand strategy", "Visual identity", "Digital experiences", "Art direction"];
-const filters = ["Todos", "Branding", "Digital", "Campaign", "Editorial"];
+const filters = ["Todos", "Java / Spring", "React", "Testes", "Processos", "Suporte"];
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("Todos");
@@ -72,63 +71,63 @@ export default function Home() {
       <aside className={`side-rail ${menuOpen ? "is-open" : ""}`}>
         <button className="rail-close" onClick={() => setMenuOpen(false)} aria-label="Fechar menu"><X size={19} /></button>
         <div className="rail-top">
-          <a className="monogram" href="#top" aria-label="Studio Nilo, início">SN<span>.</span></a>
+          <a className="monogram" href="#top" aria-label="Luanderson Guilherme, início">LG<span>.</span></a>
           <span className="rail-index">01—05</span>
         </div>
         <nav className="rail-nav" aria-label="Navegação principal">
           <button className="active" onClick={() => scrollTo("top")}><span>01</span> Início</button>
-          <button onClick={() => scrollTo("about")}><span>02</span> Sobre</button>
+          <button onClick={() => scrollTo("about")}><span>02</span> Perfil</button>
           <button onClick={() => scrollTo("work")}><span>03</span> Projetos</button>
-          <button onClick={() => scrollTo("process")}><span>04</span> Processo</button>
+          <button onClick={() => scrollTo("process")}><span>04</span> Competências</button>
           <button onClick={() => scrollTo("contact")}><span>05</span> Contato</button>
         </nav>
         <div className="rail-bottom">
-          <span className="vertical-label">DIREÇÃO CRIATIVA / 2024</span>
-          <div className="rail-socials"><a href="https://www.instagram.com" aria-label="Instagram"><Instagram size={16} /></a><a href="https://www.linkedin.com" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="https://dribbble.com" aria-label="Dribbble"><Dribbble size={16} /></a></div>
+          <span className="vertical-label">SISTEMAS / QUALIDADE / DADOS</span>
+          <div className="rail-socials"><a href="https://www.linkedin.com/in/devguilherme-silva" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="https://github.com/e0guy" aria-label="GitHub"><Github size={16} /></a><a href="mailto:guilhermedanta01@gmail.com" aria-label="E-mail"><Mail size={16} /></a></div>
         </div>
       </aside>
 
       <main className="page-content" id="top">
         <header className="mobile-header">
-          <a className="monogram" href="#top">SN<span>.</span></a>
+          <a className="monogram" href="#top">LG<span>.</span></a>
           <button onClick={() => setMenuOpen(true)} aria-label="Abrir menu"><Menu size={22} /></button>
         </header>
 
         <section className="hero-section section-pad">
           <div className="hero-copy">
-            <p className="eyebrow"><Asterisk size={14} /> Studio Nilo / Creative direction</p>
-            <h1>Ideias que<br /><em>ganham</em> forma.</h1>
-            <p className="hero-description">Direção criativa e design para marcas que querem ocupar espaço, criar desejo e permanecer na memória.</p>
-            <div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>Ver projetos <ArrowDownRight size={16} /></button><button className="text-link" onClick={() => scrollTo("about")}>Conheça o estúdio <ArrowUpRight size={15} /></button></div>
+            <p className="eyebrow"><Asterisk size={14} /> Luanderson Guilherme / Sistemas & qualidade</p>
+            <h1>Processos que<br /><em>ganham</em> clareza.</h1>
+            <p className="hero-description">Analista Júnior de Sistemas com foco em SAP Utilities, qualidade de software, processos, dados e suporte funcional.</p>
+            <div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>Ver projetos <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Luanderson-Guilherme_883fe919.pdf" target="_blank" rel="noreferrer">Baixar CV <ArrowUpRight size={15} /></a></div>
           </div>
           <div className="hero-visual">
-            <div className="hero-photo"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=90" alt="Retrato editorial em preto e branco de um diretor criativo" /></div>
-            <div className="hero-sticker"><span>BRAND<br />WITH<br />INTENT</span><Asterisk size={28} /></div>
-            <div className="hero-caption"><span>Selected portrait / 01</span><span>São Paulo — BR</span></div>
+            <div className="hero-photo"><img src="/manus-storage/guilherme_e98ecc76.png" alt="Luanderson Guilherme em seu ambiente de desenvolvimento" /></div>
+            <div className="hero-sticker"><span>SAP<br />UTILITIES<br />/ QA</span><Asterisk size={28} /></div>
+            <div className="hero-caption"><span>Analista de sistemas / 01</span><span>Igarassu — PE</span></div>
           </div>
-          <div className="hero-marquee" aria-hidden="true"><span>BRAND — DIGITAL — EDITORIAL — BRAND — DIGITAL — EDITORIAL — </span></div>
+          <div className="hero-marquee" aria-hidden="true"><span>SISTEMAS — PROCESSOS — QUALIDADE — DADOS — SISTEMAS — PROCESSOS — QUALIDADE — </span></div>
         </section>
 
         <section className="statement-section section-pad" id="about">
-          <div className="section-kicker"><span>02</span><span>Sobre o estúdio</span></div>
-          <div className="statement-grid"><div><p className="section-title">Estratégia com<br /><em>personalidade.</em></p></div><div className="statement-copy"><p>O Studio Nilo nasce do encontro entre pensamento estratégico, cultura visual e execução precisa. Criamos sistemas de marca que não apenas parecem interessantes — eles fazem sentido, criam conexão e movem negócios.</p><a className="circle-link" href="#contact" onClick={(event) => { event.preventDefault(); scrollTo("contact"); }}>Vamos conversar <MoveUpRight size={18} /></a></div></div>
-          <div className="stats-row"><div><strong>12<span>+</span></strong><small>marcas lançadas</small></div><div><strong>08</strong><small>anos de prática</small></div><div><strong>04</strong><small>continentes alcançados</small></div><div className="stats-note"><Asterisk size={17} /> Pensar diferente<br />é parte do trabalho.</div></div>
+          <div className="section-kicker"><span>02</span><span>Perfil profissional</span></div>
+          <div className="statement-grid"><div><p className="section-title">Análise com<br /><em>visão de processo.</em></p></div><div className="statement-copy"><p>Sou estudante de Análise e Desenvolvimento de Sistemas, com formação técnica em Redes de Computadores e Engenharia de Qualidade de Software pela CESAR School. Tenho experiência em suporte técnico, rotinas administrativas, análise de processos, organização de dados e melhoria contínua.</p><a className="circle-link" href="#contact" onClick={(event) => { event.preventDefault(); scrollTo("contact"); }}>Fale comigo <MoveUpRight size={18} /></a></div></div>
+          <div className="stats-row"><div><strong>05<span>+</span></strong><small>anos de experiência</small></div><div><strong>02</strong><small>projetos em destaque</small></div><div><strong>2025</strong><small>formação CESAR School</small></div><div className="stats-note"><Asterisk size={17} /> Aprender, testar<br />e melhorar sempre.</div></div>
         </section>
 
         <section className="work-section section-pad" id="work">
-          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Projetos selecionados</span></div><h2>Trabalho<br /><em>em movimento.</em></h2></div><p>Uma seleção de identidades, campanhas e experiências feitas para deixar marcas mais claras, humanas e vivas.</p></div>
+          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Projetos e experiências</span></div><h2>Trabalho<br /><em>em prática.</em></h2></div><p>Uma seleção de projetos acadêmicos e frentes de experiência em desenvolvimento, testes, suporte, processos e dados.</p></div>
           <div className="filter-row" role="tablist" aria-label="Filtrar projetos">{filters.map((filter) => <button key={filter} className={activeFilter === filter ? "selected" : ""} onClick={() => setActiveFilter(filter)} role="tab" aria-selected={activeFilter === filter}>{filter}</button>)}</div>
-          <div className="project-grid">{filteredProjects.map((project, index) => <article className={`project-card ${project.size}`} key={project.title}><div className="project-image"><img src={project.image} alt={`Projeto ${project.title}`} /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><span>{project.category}</span></div><span>{project.year}</span></div></article>)}</div>
+          <div className="project-grid">{filteredProjects.map((project) => <article className={`project-card ${project.size}`} key={project.title}><div className="project-image"><img src={project.image} alt={`Projeto ou experiência: ${project.title}`} /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><div><h3>{project.title}</h3><span>{project.category}</span></div><span>{project.year}</span></div></article>)}</div>
         </section>
 
         <section className="process-section section-pad" id="process">
-          <div className="section-kicker"><span>04</span><span>Como fazemos</span></div>
-          <div className="process-layout"><h2>Menos ruído.<br /><em>Mais direção.</em></h2><div className="process-list">{[{ n: "01", title: "Descobrir", text: "Entendemos o contexto, o desejo e o espaço que a marca quer ocupar." }, { n: "02", title: "Definir", text: "Transformamos perguntas em uma direção clara, única e possível de reconhecer." }, { n: "03", title: "Desenhar", text: "Construímos o sistema visual com intenção, consistência e detalhe." }, { n: "04", title: "Lançar", text: "Colocamos a ideia no mundo e criamos as ferramentas para fazê-la crescer." }].map((step) => <div className="process-item" key={step.n}><span>{step.n}</span><div><h3>{step.title}</h3><p>{step.text}</p></div><Check size={18} /></div>)}</div></div>
+          <div className="section-kicker"><span>04</span><span>Competências</span></div>
+          <div className="process-layout"><h2>Organizar.<br /><em>Validar.</em><br />Evoluir.</h2><div className="process-list">{[{ n: "01", title: "Sistemas e dados", text: "SQL, Excel, Qlik, organização de informações, relatórios e apoio à tomada de decisão." }, { n: "02", title: "Qualidade de software", text: "Testes manuais, funcionais, exploratórios, regressivos e de API, com BDD/Gherkin." }, { n: "03", title: "Desenvolvimento", text: "Java, Spring Boot, JavaScript, Python, React, HTML, CSS, APIs REST e Git." }, { n: "04", title: "Processos e suporte", text: "Scrum, Kanban, Kaizen, documentação, suporte técnico e melhoria contínua." }].map((step) => <div className="process-item" key={step.n}><span>{step.n}</span><div><h3>{step.title}</h3><p>{step.text}</p></div><Check size={18} /></div>)}</div></div>
         </section>
 
-        <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>STUDIO<br />NILO</span></div><div className="contact-content"><div className="section-kicker light"><span>05</span><span>Próximo projeto</span></div><h2>Tem uma ideia<br />na <em>cabeça?</em></h2><p>Conte um pouco sobre ela. A primeira conversa é por nossa conta.</p><a className="button button-light" href="mailto:hello@studionilo.design">hello@studionilo.design <ArrowUpRight size={16} /></a></div></div></section>
+        <section className="contact-section section-pad" id="contact"><div className="contact-card"><div className="contact-orbit"><Asterisk size={30} /><span>ABERTO A<br />OPORTUNIDADES</span></div><div className="contact-content"><div className="section-kicker light"><span>05</span><span>Próxima oportunidade</span></div><h2>Vamos construir<br />a <em>próxima etapa?</em></h2><p>Busco oportunidades Júnior, Academia SAP Utilities e posições em sistemas, qualidade ou análise funcional.</p><a className="button button-light" href="mailto:guilhermedanta01@gmail.com">guilhermedanta01@gmail.com <ArrowUpRight size={16} /></a></div></div></section>
 
-        <footer className="footer"><div><a className="monogram" href="#top">SN<span>.</span></a><p>Creative studio for ideas<br />worth remembering.</p></div><div className="footer-links"><a href="https://www.instagram.com">Instagram</a><a href="https://www.linkedin.com">LinkedIn</a><a href="mailto:hello@studionilo.design">E-mail</a></div><span className="footer-copy">© 2024 Studio Nilo</span></footer>
+        <footer className="footer"><div><a className="monogram" href="#top">LG<span>.</span></a><p>Analista de sistemas em formação<br />com foco em melhoria contínua.</p></div><div className="footer-links"><a href="https://www.linkedin.com/in/devguilherme-silva">LinkedIn</a><a href="https://github.com/e0guy">GitHub</a><a href="tel:+5581992174567">Telefone</a></div><span className="footer-copy">© 2025 Luanderson Guilherme</span></footer>
       </main>
     </div>
   );
