@@ -65,23 +65,23 @@ const projects = [
 const filters = ["Todos", "ONG / CRM", "Comercial / WhatsApp", "GSYNTRA / SaaS", "GSYNTRA / Ecossistema", "Java / Spring"];
 
 const tools = [
-  { name: "Java", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/openjdk" },
-  { name: "Python", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/python" },
-  { name: "HTML", group: "Web", icon: "https://cdn.simpleicons.org/html5" },
-  { name: "CSS", group: "Web", icon: "https://img.icons8.com/color/48/000000/css3.png" },
-  { name: "TypeScript", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/typescript" },
-  { name: "React", group: "Desenvolvimento", icon: "https://cdn.simpleicons.org/react" },
-  { name: "SQL", group: "Dados", icon: "https://cdn.simpleicons.org/mysql" },
-  { name: "Supabase", group: "Backend", icon: "https://cdn.simpleicons.org/supabase" },
-  { name: "PostgreSQL", group: "Dados", icon: "https://cdn.simpleicons.org/postgresql" },
-  { name: "Spring Boot", group: "Backend", icon: "https://cdn.simpleicons.org/springboot" },
-  { name: "Qlik", group: "Dados", icon: "https://cdn.simpleicons.org/qlik" },
-  { name: "Excel", group: "Dados", icon: "https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" },
-  { name: "ChatGPT", group: "IA aplicada", icon: "https://img.icons8.com/color/48/000000/chatgpt.png" },
-  { name: "Gemini", group: "IA aplicada", icon: "https://cdn.simpleicons.org/googlegemini" },
-  { name: "Manus AI", group: "IA aplicada", icon: "https://img.icons8.com/color/48/000000/artificial-intelligence.png" },
-  { name: "Canva", group: "Criação", icon: "https://img.icons8.com/color/48/000000/canva.png" },
-  { name: "Figma", group: "Criação", icon: "https://cdn.simpleicons.org/figma" },
+  { name: "Java", group: "Desenvolvimento", level: 75, icon: "https://cdn.simpleicons.org/openjdk" },
+  { name: "Python", group: "Desenvolvimento", level: 70, icon: "https://cdn.simpleicons.org/python" },
+  { name: "HTML", group: "Web", level: 90, icon: "https://cdn.simpleicons.org/html5" },
+  { name: "CSS", group: "Web", level: 85, icon: "https://img.icons8.com/color/48/000000/css3.png" },
+  { name: "TypeScript", group: "Desenvolvimento", level: 75, icon: "https://cdn.simpleicons.org/typescript" },
+  { name: "React", group: "Desenvolvimento", level: 80, icon: "https://cdn.simpleicons.org/react" },
+  { name: "SQL", group: "Dados", level: 75, icon: "https://cdn.simpleicons.org/mysql" },
+  { name: "Supabase", group: "Backend", level: 65, icon: "https://cdn.simpleicons.org/supabase" },
+  { name: "PostgreSQL", group: "Dados", level: 65, icon: "https://cdn.simpleicons.org/postgresql" },
+  { name: "Spring Boot", group: "Backend", level: 70, icon: "https://cdn.simpleicons.org/springboot" },
+  { name: "Qlik", group: "Dados", level: 60, icon: "https://cdn.simpleicons.org/qlik" },
+  { name: "Excel", group: "Dados", level: 80, icon: "https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" },
+  { name: "ChatGPT", group: "IA aplicada", level: 90, icon: "https://img.icons8.com/color/48/000000/chatgpt.png" },
+  { name: "Gemini", group: "IA aplicada", level: 80, icon: "https://cdn.simpleicons.org/googlegemini" },
+  { name: "Manus AI", group: "IA aplicada", level: 85, icon: "https://img.icons8.com/color/48/000000/artificial-intelligence.png" },
+  { name: "Canva", group: "Criação", level: 75, icon: "https://img.icons8.com/color/48/000000/canva.png" },
+  { name: "Figma", group: "Criação", level: 65, icon: "https://cdn.simpleicons.org/figma" },
 ];
 
 export default function Home() {
@@ -148,8 +148,9 @@ export default function Home() {
         </section>
 
         <section className="tools-section section-pad" id="tools">
-          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Ferramentas e tecnologias</span></div><h2>Stack para<br /><em>tirar ideias do papel.</em></h2></div><p>As tecnologias que uso para construir interfaces, APIs, dados, automações e experiências digitais com clareza e consistência.</p></div>
-          <div className="tools-grid">{tools.map((tool) => <div className="tool-card" key={tool.name}><div className="tool-icon"><span className="tool-fallback">{tool.name.slice(0, 2).toUpperCase()}</span><img src={tool.icon} alt={`${tool.name} ícone`} loading="lazy" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} /></div><div><strong>{tool.name}</strong><span>{tool.group}</span></div></div>)}</div>
+          <div className="section-heading"><div><div className="section-kicker"><span>03</span><span>Ferramentas e tecnologias</span></div><h2>Stack para<br /><em>tirar ideias do papel.</em></h2></div><p>As tecnologias que uso para construir interfaces, APIs, dados, automações e experiências digitais. Os níveis são uma referência visual baseada no meu uso atual e podem evoluir com novos projetos.</p></div>
+          <div className="tools-grid">{tools.map((tool) => <div className="tool-card" key={tool.name}><div className="tool-icon"><span className="tool-fallback">{tool.name.slice(0, 2).toUpperCase()}</span><img src={tool.icon} alt={`${tool.name} ícone`} loading="lazy" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} /></div><div><strong>{tool.name}</strong><span>{tool.group}</span><div className="tool-level" aria-label={`${tool.name}: ${tool.level}% de proficiência`}><div className="tool-level-track"><span style={{ width: `${tool.level}%` }} /></div><small>{tool.level}%</small></div></div></div>)}</div>
+          <div className="tools-legend"><span><i className="legend-dot advanced" /> Avançado</span><span><i className="legend-dot solid" /> Sólido</span><span><i className="legend-dot developing" /> Em desenvolvimento</span></div>
         </section>
 
         <section className="work-section section-pad" id="work">
