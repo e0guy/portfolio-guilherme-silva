@@ -324,3 +324,26 @@ html[data-theme="dark"] .modal-close:hover, html[data-theme="dark"] .modal-close
   .hero-copy h1 { font-size: calc(56px * var(--font-scale)); }
   .section-heading h2 { font-size: calc(58px * var(--font-scale)); }
 }
+
+
+/* Universal accessibility toolbar: visible on desktop and hidden only when the mobile header provides the same controls. */
+.desktop-a11y { position: fixed; top: 18px; right: 24px; z-index: 25; display: flex; align-items: center; gap: 8px; padding: 6px; background: color-mix(in srgb, var(--paper) 90%, transparent); border: 1px solid var(--line); box-shadow: 0 8px 22px rgba(18,52,59,.1); backdrop-filter: blur(8px); }
+.desktop-a11y .theme-toggle { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.desktop-a11y .theme-toggle:hover, .desktop-a11y .theme-toggle:focus-visible { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.desktop-a11y .font-controls button { color: var(--ink); border-color: var(--line); }
+.desktop-a11y .font-controls button:hover, .desktop-a11y .font-controls button:focus-visible { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+html[data-theme="dark"] .desktop-a11y { background: rgba(16,25,28,.92); }
+html[data-theme="dark"] .desktop-a11y .theme-toggle { background: var(--lime); color: #081316; border-color: var(--lime); }
+
+@media (max-width: 850px) {
+  .desktop-a11y { display: none; }
+}
+@media (min-width: 851px) {
+  .side-rail .rail-controls { display: none; }
+}
+@media (max-width: 1180px) and (min-width: 851px) {
+  .desktop-a11y { top: 14px; right: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desktop-a11y, .desktop-a11y * { transition: none !important; }
+}

@@ -234,7 +234,18 @@ export default function Home() {
   }, [darkMode]);
   useEffect(() => {
     if (!selectedProject) return;
-    const handleKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") setSelectedProject(null); };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setSelectedProject(null); return; }
+      if (event.key !== "Tab") return;
+      const dialog = document.querySelector<HTMLElement>(".project-modal");
+      if (!dialog) return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('button, a[href], [tabindex]:not([tabindex="-1"])')).filter((element) => !element.hasAttribute("disabled"));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
     document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
     closeButtonRef.current?.focus();
@@ -252,6 +263,7 @@ export default function Home() {
       </aside>
 
       <main className="page-content" id="top">
+        <div className="desktop-a11y" aria-label="Controles de acessibilidade"><div className="font-controls"><button onClick={() => adjustFontSize(-0.05)} aria-label={t.fontDecrease}><Minus size={13} /></button><button className="font-reset" onClick={() => setFontScale(1)} aria-label={t.fontReset}><Type size={13} /></button><button onClick={() => adjustFontSize(0.05)} aria-label={t.fontIncrease}><Plus size={13} /></button></div><button className="theme-toggle" onClick={() => setDarkMode((current) => !current)} aria-label={darkMode ? t.themeDark : t.themeLight} aria-pressed={darkMode}>{darkMode ? <Sun size={16} /> : <Moon size={16} />}</button></div>
         <header className="mobile-header"><a className="monogram" href="#top" aria-label="Guilherme Silva, início">GS<span>.</span></a><div className="mobile-controls"><div className="language-switcher" aria-label="Language selector">{(["pt", "es", "en"] as Language[]).map((lang) => <button key={lang} className={language === lang ? "active" : ""} onClick={() => changeLanguage(lang)} aria-pressed={language === lang}>{lang.toUpperCase()}</button>)}</div><div className="font-controls" aria-label="Font size controls"><button onClick={() => adjustFontSize(-0.05)} aria-label={t.fontDecrease}><Minus size={13} /></button><button className="font-reset" onClick={() => setFontScale(1)} aria-label={t.fontReset}><Type size={13} /></button><button onClick={() => adjustFontSize(0.05)} aria-label={t.fontIncrease}><Plus size={13} /></button></div><button className="theme-toggle" onClick={() => setDarkMode((current) => !current)} aria-label={darkMode ? t.themeDark : t.themeLight} aria-pressed={darkMode}>{darkMode ? <Sun size={17} /> : <Moon size={17} />}</button><button onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={22} /></button></div></header>
 
         <section className="hero-section section-pad"><div className="hero-copy"><p className="eyebrow"><Asterisk size={14} /> {t.heroEyebrow}</p><h1>{t.heroTitle}</h1><p className="hero-description">{t.heroDescription}</p><div className="hero-actions"><button className="button button-dark" onClick={() => scrollTo("work")}>{t.seeProjects} <ArrowDownRight size={16} /></button><a className="text-link" href="/manus-storage/CV-Guilherme-Silva-Atualizado_8f1eaa64.pdf" target="_blank" rel="noreferrer">{t.downloadCv} <ArrowUpRight size={15} /></a></div></div><div className="hero-visual"><div className="hero-photo"><img src="/manus-storage/guilherme_e98ecc76.png" alt="Guilherme Silva" /></div><div className="hero-sticker"><span>IA<br />QA<br />/ DATA</span><Asterisk size={28} /></div><div className="hero-caption"><span>{t.digitalSolutions}</span><span>{t.location}</span></div></div><div className="hero-marquee" aria-hidden="true"><span>DESENVOLVIMENTO — QA — DADOS — AUTOMAÇÃO — DESENVOLVIMENTO — QA — DADOS — </span></div></section>
